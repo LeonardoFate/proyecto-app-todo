@@ -11,15 +11,15 @@ import {
   getSharedTodoById,
 } from "./database.js";
 import cors from "cors";
-const corsOption = {
-  origin: "http://127.0.0.1:9000",
+const corsOptions = {
+  origin: "http://localhost:8081",
   methods: ["GET", "POST"],
   credentials: true,
 };
 
 const app = express();
 app.use(express.json());
-app.use(cors(corsOption));
+app.use(cors(corsOptions));
 app.get("/todos/:id", async (req, res) => {
   try {
     const todo = await getTodoById(req.params.id);
