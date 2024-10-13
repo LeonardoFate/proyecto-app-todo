@@ -28,11 +28,10 @@ CREATE TABLE shared_todos(
     Foreign Key (shared_with_id) REFERENCES users(id)ON DELETE CASCADE
 );
 
-INSERT INTO shared_todos(todo_id, user_id, shared_id) VALUES(1,1,2);
+
 
 INSERT INTO users(name, email, password) values ('anthony', 'example@example.com','12345');
 INSERT INTO users(name, email, password) values ('sofia', 'example2@example.com','123456');
-
 
 INSERT INTO todos (title, user_id)
 VALUES ("Go to a morning run", 1),
@@ -46,4 +45,3 @@ SELECT todos.*, shared_todos.shared_with_id
 FROM todos
 LEFT JOIN shared_todos ON todos.id = shared_todos.todo_id
 WHERE todos.user_id = 1 OR shared_todos.shared_with_id = 1;
-
